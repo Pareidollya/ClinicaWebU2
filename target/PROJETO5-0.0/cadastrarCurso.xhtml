@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/template.xhtml">
+            <ui:define name ="principal">
+                            
+                <center>
+                <p>
+                CADASTRO DE CURSO</p><p>
+                </p>
+                 
+                
+                    
+                        
+                    Nome: <b:inputText value="#{cursoBean.curso.titulo}" required="true"/>
+                    Descrição: <b:inputText value="#{cursoBean.curso.descrição}"/>
+                    Carga Horaria: <b:inputText value="#{cursoBean.curso.cargaHoraria}"/>
+                    Valor: <b:inputText value="#{cursoBean.curso.valor}"/>
+                    
+                    <h:form>
+                         _______________________________________
+                    <p></p> 
+                    CADASTRO DE PROFESSOR NO CURSO (1 professor por curso, deu problema na pagia ao salvar varios)
+                    <h:panelGrid columns="2">
+               
+                        Nome:  <b:inputText value ="#{cursoBean.prof.nome}" required="true"/>        
+                    CPF: <b:inputText value ="#{cursoBean.prof.cpf}" mask="999.999.9999-99" required="true"/>
+                    RG: <b:inputText value ="#{cursoBean.prof.rg}" required="true"/>            
+                    Salário: <b:inputText value ="#{cursoBean.prof.salario}" required="true"/>
+                    Disciplina: <b:inputText value ="#{cursoBean.prof.disciplina}" required="true"/> 
+                    
+                    </h:panelGrid>
+                        ___________________________________
+                    <p></p> 
+                        CADASTRO DE ALUNO NO CURSO - (pode salvar varios alunos no banco de dados)
+                        
+                    <h:panelGrid columns="2">
+                        
+                    <p></p>
+                    Nome:  <b:inputText value ="#{cursoBean.aluno.nome}"/>        
+                    CPF: <b:inputText value ="#{cursoBean.aluno.cpf}" mask="999.999.9999-99"/>
+                    RG: <b:inputText value ="#{cursoBean.aluno.rg}"/>            
+                    Sexo: <b:inputText value ="#{cursoBean.aluno.sexo}"/>
+                    Nascimento: <b:inputText value="#{cursoBean.aluno.dataNascimento}" mask="99/99/9999"/>
+                    Matrícula: <b:inputText value="#{cursoBean.aluno.descrição}"/>     
+                    
+                        Nota 1: <b:inputText value="#{cursoBean.aluno.nota1}"/>
+                        Nota 2: <b:inputText value="#{cursoBean.aluno.nota2}"/>
+                        Nota 3: <b:inputText value="#{cursoBean.aluno.nota3}"/>
+                        Nota 4: <b:inputText value="#{cursoBean.aluno.nota4}"/>
+                    </h:panelGrid>
+                        <h:panelGrid columns="2">
+   
+                    <b:commandButton value="Salvar Aluno" action="#{cursoBean.salvarAlunoCurso()}"/>        
+                        </h:panelGrid>
+                        Aluno: #{cursoBean.aluno.nome} | Nota Final: #{cursoBean.aluno.notaFinal} | Status: #{cursoBean.aluno.status} | #{cursoBean.curso.alunos} cadastrados *contador bugou
+                      
+                        <p></p> 
+   
+   
+                   
+                    <b:commandButton value="CADASTRAR CURSO" action="#{cursoBean.cadastrarCurso()}"/>
+            
+                        
+                    </h:form>
+
+                    
+    </center>
+    </ui:define>
+    </ui:composition>
+    </h:body>
+    
+</html>
+

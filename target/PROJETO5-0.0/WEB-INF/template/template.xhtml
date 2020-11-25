@@ -1,0 +1,178 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      dir="ltr"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    <title>ESCOLA WEB</title>
+    </h:head>
+    <h:body>
+        <b>
+        <h:form>
+            <center>        
+                <h:panelGrid border="3">    
+                <h:panelGrid columns="2">
+     
+                    <b:commandLink value="ESCOLA WEB - PAGINA PRINCIPAL" action="#{navegação.main()}" />
+
+                </h:panelGrid>  
+                </h:panelGrid> 
+                
+            </center>
+                <b:jumbotron>
+                <ui:insert name ="principal"></ui:insert>
+                </b:jumbotron>
+            <center>
+                <br>LISTA DE CADASTROS NO BANCO DE DADOS 
+                </br>
+                 _______________________________________
+                    <p></p>
+                    *apenas excluir Aluno e Curso não funcionou :( 
+                <p>
+                </p>
+            </center>
+            <h:form>
+                <center>
+                    
+                    LISTA DE ALUNOS
+                    </center>
+                    <b:dataTable 
+                        value="#{alunoBean.alunos}"
+                        var="aluno">
+                        <b:dataTableColumn value="#{aluno.id}"  order="desc" label="ID" />
+                        <b:dataTableColumn value="#{aluno.nome}" />
+                        <b:dataTableColumn value="#{aluno.cpf}" />
+                        <b:dataTableColumn value="#{aluno.rg}" />
+                        <b:dataTableColumn value="#{aluno.sexo}" />
+                        <b:dataTableColumn value="#{aluno.dataNascimento}" />
+                        <b:dataTableColumn value="#{aluno.descrição}" />
+                        <b:dataTableColumn value="#{aluno.curso}" />
+                        <b:dataTableColumn value="#{aluno.notaFinal}" />
+                        <b:dataTableColumn value="#{aluno.status}" />
+
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Opções </f:facet>
+                            <h:commandLink action="#{alunoBean.excluir(aluno)}">
+                            Excluir</h:commandLink>
+                            
+                        </b:dataTableColumn>
+
+                    </b:dataTable>
+                </h:form>
+            <h:form>
+                <center>
+                    _______________________________________
+                        <p></p>
+                    LISTA DE CURSOS
+                    </center>
+                    <b:dataTable 
+                        value="#{cursoBean.cursos}"
+                        var="curso">
+                        <b:dataTableColumn value="#{curso.id}"  order="desc" label="ID" />
+                        <b:dataTableColumn value="#{curso.titulo}" />
+                        <b:dataTableColumn value="#{curso.descrição}" />
+                        <b:dataTableColumn value="#{curso.cargaHoraria}" />
+                        <b:dataTableColumn value="#{curso.valor}" />
+                        <b:dataTableColumn value="#{curso.alunos}" />
+                        <b:dataTableColumn value="#{curso.professores}" />
+
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Opções </f:facet>
+                            <h:commandLink action="#{cursoBean.excluirCurso(curso)}">
+                                Excluir</h:commandLink>                   
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+            <center>
+                        _______________________________________
+                        <p></p>
+                    LISTA DE PROFESSORES 
+                    </center> 
+                    <b:dataTable 
+                        value="#{professorBean.professores}"
+                        var="professor">
+                        <b:dataTableColumn value="#{professor.id}"  order="desc" label="ID" />
+                        <b:dataTableColumn value="#{professor.cargo}" />
+                        <b:dataTableColumn value="#{professor.salario}" />
+                        <b:dataTableColumn value="#{professor.nome}" />
+                        <b:dataTableColumn value="#{professor.cpf}" />
+                        <b:dataTableColumn value="#{professor.rg}" />
+                        <b:dataTableColumn value="#{professor.areaInteresse}" />
+                        <b:dataTableColumn value="#{professor.disciplina}" />
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Opções </f:facet>
+                            <h:commandLink action="#{professorBean.excluir(professor)}">
+                                Excluir</h:commandLink>                   
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+           
+            <h:form>
+                    <center>
+                        _______________________________________
+                        <p></p>
+                    LISTA DE FUNCIONARIOS
+                    </center>
+                    <b:dataTable 
+                        value="#{funcionarioBean.funcionarios}"
+                        var="funcionario">
+                 
+                        <b:dataTableColumn value="#{funcionario.cargo}" />
+                        <b:dataTableColumn value="#{funcionario.salario}" />
+                        <b:dataTableColumn value="#{funcionario.nome}" />
+                        <b:dataTableColumn value="#{funcionario.cpf}" />
+                        <b:dataTableColumn value="#{funcionario.rg}" />
+                    
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Opções </f:facet>
+                            <h:commandLink action="#{funcionarioBean.excluir(funcionario)}">
+                                Excluir</h:commandLink>                   
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+            <h:form>
+                <center>
+                    _______________________________________
+                        <p></p>
+                    FOLHA DE PAGAMENTO - SALARIOS CADASTRADOS
+                    </center>
+                    <b:dataTable 
+                        value="#{folhaBean.pagamentos}"
+                        var="pagamento">
+                 
+                        <b:dataTableColumn value="#{pagamento.id}" />
+                        <b:dataTableColumn value="#{pagamento.salarioBruto}" />
+                        <b:dataTableColumn value="#{pagamento.irrf}" />
+                        <b:dataTableColumn value="#{pagamento.inss}" />
+                        <b:dataTableColumn value="#{pagamento.slarioLiquido}" />
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Opções </f:facet>
+                            <h:commandLink action="#{folhaBean.excluir(pagamento)}">
+                                Excluir</h:commandLink>                   
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+             <h:form>
+            ____________________________________________________________________________________
+                    <p></p>
+            <b:container>
+            <b:row>
+                <b:column col-md="6">
+
+                    <p>PROVA 2 - PROJETO DE PROGRAMAÇÃO 2020</p>
+
+                </b:column>
+            </b:row>
+
+            <hr></hr>
+
+          
+        </b:container>
+        </h:form>
+        
+     </b>
+    </h:body>
+</html>

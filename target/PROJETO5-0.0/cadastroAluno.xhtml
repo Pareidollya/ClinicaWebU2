@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/template.xhtml">
+            <ui:define name ="principal">
+                
+                <h:form>
+                    
+                    <center>
+                        <p>
+                        CADASTRO DE ALUNO</p><p>
+                        </p>
+                         
+                    <h:panelGrid columns ="2">
+
+                          
+                    Nome:  <b:inputText value ="#{alunoBean.aluno.nome}" required="true"/>        
+                    CPF: <b:inputText value ="#{alunoBean.aluno.cpf}" required="true" mask="999.999.9999-99"/>
+                    RG: <b:inputText value ="#{alunoBean.aluno.rg}" required="true" requiredMessage="Campo obrigatório"/>            
+                    Sexo: <b:inputText value ="#{alunoBean.aluno.sexo}" required="true" requiredMessage="Campo obrigatório"/>
+                    Nascimento: <b:inputText value="#{alunoBean.aluno.dataNascimento}" mask="99/99/9999"/>
+                    Matrícula: <b:inputText value="#{alunoBean.aluno.descrição}"/>
+                    </h:panelGrid>
+                        <p></p>
+                        Notas do aluno:
+                        <p></p>
+                    <h:panelGrid columns="2">
+                        Nota 1: <b:inputText value="#{alunoBean.aluno.nota1}"/>
+                        Nota 2: <b:inputText value="#{alunoBean.aluno.nota2}"/>
+                        Nota 3: <b:inputText value="#{alunoBean.aluno.nota3}"/>
+                        Nota 4: <b:inputText value="#{alunoBean.aluno.nota4}"/>
+                        
+                    </h:panelGrid>    
+                        
+                        <h:panelGrid columns="4">
+                        <b:commandButton value ="Status" action="#{alunoBean.status()}"/>
+                        > Nota final: #{alunoBean.aluno.notaFinal} |
+                        Status: #{alunoBean.aluno.status}
+                        
+                        </h:panelGrid>
+                        <p></p>
+                        <p></p>
+
+                        <b:commandButton value ="Cadastrar Aluno" action="#{alunoBean.cadastrarAluno()}"/>
+                        
+                        </center>
+                </h:form>
+                <h:form>
+                    LISTA DE ALUNOS
+                    <b:dataTable 
+                        value="#{alunoBean.alunos}"
+                        var="aluno">
+                        <b:dataTableColumn value="#{aluno.id}"  order="desc" label="ID" />
+                        <b:dataTableColumn value="#{aluno.nome}" />
+                        <b:dataTableColumn value="#{aluno.cpf}" />
+                        <b:dataTableColumn value="#{aluno.rg}" />
+                        <b:dataTableColumn value="#{aluno.sexo}" />
+                        <b:dataTableColumn value="#{aluno.dataNascimento}" />
+                        <b:dataTableColumn value="#{aluno.descrição}" />
+                        <b:dataTableColumn value="#{aluno.curso}" />
+                        <b:dataTableColumn value="#{aluno.notaFinal}" />
+                        <b:dataTableColumn value="#{aluno.status}" />
+
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Ações </f:facet>
+                            <h:commandLink action="#{alunoBean.excluir(aluno)}">
+                            Excluir</h:commandLink>
+                            
+                        </b:dataTableColumn>
+
+                    </b:dataTable>
+                </h:form>
+                    
+           </ui:define>
+           </ui:composition>
+        
+    </h:body>
+</html>
+

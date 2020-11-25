@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/template.xhtml">
+            <ui:define name ="principal">
+                <h:form>
+                    <center>
+                       <p> CADASTRO DE PROFESSOR</p>
+                       <p></p>
+              
+                         
+                    <h:panelGrid columns ="2">
+
+                          
+                    Nome:  <b:inputText value ="#{professorBean.prof.nome}" required="true"/>        
+                    CPF: <b:inputText value ="#{professorBean.prof.cpf}" required="true" mask="999.999.9999-99"/>
+                    RG: <b:inputText value ="#{professorBean.prof.rg}" required="true" requiredMessage="Campo obrigatório"/>            
+                    Salário: <b:inputText value ="#{professorBean.prof.salario}" required="true" requiredMessage="Campo obrigatório"/>
+                    Area de Interesse: <b:inputText value ="#{professorBean.prof.areaInteresse}" required="true" requiredMessage="Campo obrigatório"/>
+                    Disciplina: <b:inputText value ="#{professorBean.prof.disciplina}" required="true" requiredMessage="Campo obrigatório"/> 
+                    <p /><br /> <b:commandButton value ="Cadastrar Professor" action="#{professorBean.cadastrarProfessor()}"/>
+                        
+                    </h:panelGrid>
+                        </center>
+                </h:form>
+                
+               
+           </ui:define>
+           </ui:composition>
+    </h:body>
+</html>
+
+
+
